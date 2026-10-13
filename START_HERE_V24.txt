@@ -1,0 +1,25 @@
+LEAP2LAUNCH V24 — START HERE
+
+1. Extract this ZIP.
+2. Open the extracted v21 folder.
+3. Easiest: double-click START_LEAP2LAUNCH_V24.bat
+   OR run in PowerShell from this v21 folder:
+       python app.py
+4. Open:
+       http://127.0.0.1:5000/
+5. To confirm the CURRENT build (not an old Flask server), open:
+       http://127.0.0.1:5000/build-status
+   It must show build = V24 — Consolidated Working Build.
+
+IMPORTANT
+- Do not delete database.db if you already have local project data.
+- Do not run main.py for the Flask web app.
+- If port 5000 is already in use, stop the old Flask terminal with Ctrl+C first.
+- If Python reports a missing package, install requirements.txt in the same environment.
+
+
+V25 GLOBAL CAREER DISCOVERY + VERIFIED ACCOUNT UPDATE
+- New: Career Explorer, Career Discovery, Open Learning Library, multiple saved roles/workspace switching, email OTP verification, verified email changes.
+- Configure SMTP using LEAP2LAUNCH_SMTP_HOST, LEAP2LAUNCH_SMTP_PORT, LEAP2LAUNCH_SMTP_USERNAME, LEAP2LAUNCH_SMTP_PASSWORD, and LEAP2LAUNCH_FROM_EMAIL before expecting real email delivery. See PRODUCT_SCOPE_AND_SETUP.md.
+- New signups cannot log in until the email OTP is confirmed. Existing accounts are preserved.
+- Run: python VERIFY_BUILD.py

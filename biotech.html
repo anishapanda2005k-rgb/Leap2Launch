@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biotechnology World | Leap2Launch</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: #182033;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(61, 181, 143, .15), transparent 28%),
+                radial-gradient(circle at 90% 15%, rgba(91, 116, 232, .14), transparent 30%),
+                #f3f7f5;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            height: 68px;
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid #e3e8e5;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 850;
+            color: #29458f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #687181;
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .nav-links a:hover {
+            color: #3155d9;
+        }
+
+        .logout {
+            background: #f2f4f7;
+            padding: 9px 14px;
+            border-radius: 9px;
+        }
+
+        .logout:hover {
+            color: #d33 !important;
+            background: #fff0f0;
+        }
+
+
+        /* PAGE */
+
+        .container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 30px 25px 60px;
+        }
+
+
+        /* WORLD HEADER */
+
+        .world-header {
+            background:
+                linear-gradient(135deg, #173f39, #287c68 55%, #4a8db2);
+
+            color: white;
+
+            border-radius: 26px;
+
+            padding: 35px;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 20px 45px rgba(25,75,65,.18);
+        }
+
+        .world-header::before {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.06);
+
+            right: -70px;
+            top: -100px;
+        }
+
+        .world-header-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 750px;
+        }
+
+        .back {
+            color: rgba(255,255,255,.75);
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        .world-header h1 {
+            margin-top: 16px;
+            font-size: 35px;
+            margin-bottom: 9px;
+        }
+
+        .world-header p {
+            color: rgba(255,255,255,.82);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .world-stats {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.12);
+
+            padding: 10px 14px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* LAB */
+
+        .section-title {
+            margin: 30px 0 15px;
+        }
+
+        .section-title h2 {
+            font-size: 21px;
+        }
+
+        .section-title p {
+            color: #7b8491;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+
+        /* CHALLENGE GRID */
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .challenge {
+            background: white;
+
+            border: 1px solid #e2e8e4;
+
+            border-radius: 20px;
+
+            padding: 23px;
+
+            position: relative;
+
+            transition: .25s;
+        }
+
+        .challenge:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 15px 30px rgba(35,60,52,.09);
+        }
+
+        .challenge.locked {
+            opacity: .62;
+        }
+
+        .challenge-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+        .challenge-icon {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 15px;
+
+            background: #edf8f4;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+        }
+
+        .difficulty {
+            font-size: 9px;
+            font-weight: 800;
+
+            padding: 5px 8px;
+
+            border-radius: 15px;
+
+            background: #f0f2f6;
+
+            color: #697283;
+        }
+
+        .challenge h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .challenge p {
+            color: #747e8d;
+            font-size: 12px;
+            line-height: 1.65;
+
+            min-height: 60px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+
+            margin-top: 15px;
+        }
+
+        .skill {
+            background: #f2f5f3;
+
+            color: #53625d;
+
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+        .challenge-button {
+            display: block;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            margin-top: 18px;
+
+            padding: 10px;
+
+            border-radius: 9px;
+
+            background: #3155d9;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 750;
+        }
+
+        .locked-button {
+            background: #e8ebef;
+            color: #858c98;
+        }
+
+
+        /* AI */
+
+        .ai-card {
+            margin-top: 25px;
+
+            background: white;
+
+            border: 1px solid #e0e5e3;
+
+            border-radius: 21px;
+
+            padding: 23px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .robot {
+            width: 70px;
+            height: 70px;
+
+            background: #eef1ff;
+
+            border-radius: 21px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+
+            animation: robotFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes robotFloat {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .ai-content h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .ai-content p {
+            color: #727b89;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .ai-tag {
+            margin-left: auto;
+
+            background: #edf0ff;
+            color: #4054ad;
+
+            padding: 8px 11px;
+
+            border-radius: 9px;
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+            white-space: nowrap;
+        }
+
+
+        /* EVIDENCE */
+
+        .evidence {
+            margin-top: 25px;
+
+            background: white;
+
+            border: 1px solid #e1e6e4;
+
+            border-radius: 21px;
+
+            padding: 25px;
+        }
+
+        .evidence-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 12px;
+
+            margin-top: 17px;
+        }
+
+        .evidence-item {
+            padding: 17px;
+
+            background: #f7f9f8;
+
+            border-radius: 13px;
+        }
+
+        .evidence-item strong {
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .evidence-item span {
+            color: #7b8490;
+
+            font-size: 10px;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width:900px) {
+
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-card {
+                align-items: flex-start;
+            }
+
+            .ai-tag {
+                margin-left: 0;
+            }
+        }
+
+        @media(max-width:650px) {
+
+            .navbar {
+                padding: 0 18px;
+            }
+
+            .nav-links a:not(.logout) {
+                display: none;
+            }
+
+            .container {
+                padding: 20px 15px 50px;
+            }
+
+            .world-header {
+                padding: 27px;
+            }
+
+            .world-header h1 {
+                font-size: 28px;
+            }
+
+            .world-stats {
+                flex-wrap: wrap;
+            }
+
+            .ai-card {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Leap2Launch
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('student_profile') }}">
+            My Profile
+        </a>
+
+        <a href="{{ url_for('world') }}">
+            My World
+        </a>
+
+        <a href="{{ url_for('skills') }}">
+            Skills
+        </a>
+
+        <a href="{{ url_for('challenge') }}">
+            Opportunities
+        </a>
+
+        <a href="{{ url_for('logout') }}" class="logout">
+            🚪 Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- WORLD HEADER -->
+
+<section class="world-header">
+
+    <div class="world-header-content">
+
+        <a href="{{ url_for('world') }}" class="back">
+            ← Back to My World
+        </a>
+
+        <h1>
+            🧬 Molecular Research Lab
+        </h1>
+
+        <p>
+            Welcome to the Biotechnology Skill World.
+            Here you will solve realistic laboratory problems,
+            make scientific decisions, use AI as a learning tool,
+            and build evidence of your practical competencies.
+        </p>
+
+
+        <div class="world-stats">
+
+            <div class="stat">
+                🧬 Biotechnology
+            </div>
+
+            <div class="stat">
+                ⚡ Level {{ student['level'] or 1 }}
+            </div>
+
+            <div class="stat">
+                ⭐ {{ student['xp'] or 0 }} XP
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CHALLENGES -->
+
+<div class="section-title">
+
+    <h2>
+        Research Missions
+    </h2>
+
+    <p>
+        Complete progressively harder activities to demonstrate your skills.
+    </p>
+
+</div>
+
+
+<div class="challenge-grid">
+
+
+    <!-- LEVEL 1 -->
+
+    <div class="challenge">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🧪
+            </div>
+
+            <span class="difficulty">
+                FOUNDATION
+            </span>
+
+        </div>
+
+        <h3>
+            DNA Extraction
+        </h3>
+
+        <p>
+            Identify the correct steps and reagents required
+            to isolate DNA from a biological sample.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                Lab Basics
+            </span>
+
+            <span class="skill">
+                DNA
+            </span>
+
+            <span class="skill">
+                Protocol
+            </span>
+
+        </div>
+
+        <a
+            href="{{ url_for('challenge') }}"
+            class="challenge-button"
+        >
+            Start Mission →
+        </a>
+
+    </div>
+
+
+    <!-- LEVEL 2 -->
+
+    <div class="challenge">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🧬
+            </div>
+
+            <span class="difficulty">
+                APPLIED
+            </span>
+
+        </div>
+
+        <h3>
+            PCR Decision Lab
+        </h3>
+
+        <p>
+            Analyse a PCR setup and identify the correct
+            components, controls and experimental decisions.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                PCR
+            </span>
+
+            <span class="skill">
+                Analysis
+            </span>
+
+            <span class="skill">
+                Controls
+            </span>
+
+        </div>
+
+        <a
+            href="{{ url_for('challenge') }}"
+            class="challenge-button"
+        >
+            Start Mission →
+        </a>
+
+    </div>
+
+
+    <!-- LEVEL 3 -->
+
+    <div class="challenge">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🔬
+            </div>
+
+            <span class="difficulty">
+                ADVANCED
+            </span>
+
+        </div>
+
+        <h3>
+            Agarose Gel Analysis
+        </h3>
+
+        <p>
+            Interpret DNA bands, compare them with a ladder,
+            and reason about sample quality and quantity.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                Electrophoresis
+            </span>
+
+            <span class="skill">
+                DNA Analysis
+            </span>
+
+        </div>
+
+        <a
+            href="{{ url_for('challenge') }}"
+            class="challenge-button"
+        >
+            Start Mission →
+        </a>
+
+    </div>
+
+
+    <!-- LEVEL 4 -->
+
+    <div class="challenge locked">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🧫
+            </div>
+
+            <span class="difficulty">
+                EXPERT
+            </span>
+
+        </div>
+
+        <h3>
+            Troubleshooting Lab
+        </h3>
+
+        <p>
+            Diagnose why an experiment failed and decide
+            which variables should be investigated first.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                Troubleshooting
+            </span>
+
+            <span class="skill">
+                Reasoning
+            </span>
+
+        </div>
+
+        <div class="challenge-button locked-button">
+            🔒 Complete previous missions
+        </div>
+
+    </div>
+
+
+    <!-- LEVEL 5 -->
+
+    <div class="challenge locked">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🧠
+            </div>
+
+            <span class="difficulty">
+                EXPERT
+            </span>
+
+        </div>
+
+        <h3>
+            Experimental Design
+        </h3>
+
+        <p>
+            Design an experiment from a research objective
+            while considering controls, variables and evidence.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                Research
+            </span>
+
+            <span class="skill">
+                Experimental Design
+            </span>
+
+        </div>
+
+        <div class="challenge-button locked-button">
+            🔒 Locked
+        </div>
+
+    </div>
+
+
+    <!-- INDUSTRY -->
+
+    <div class="challenge locked">
+
+        <div class="challenge-top">
+
+            <div class="challenge-icon">
+                🏢
+            </div>
+
+            <span class="difficulty">
+                INDUSTRY
+            </span>
+
+        </div>
+
+        <h3>
+            Industry Research Challenge
+        </h3>
+
+        <p>
+            Solve a real-world industry problem after
+            demonstrating sufficient verified competencies.
+        </p>
+
+        <div class="skills">
+
+            <span class="skill">
+                Industry
+            </span>
+
+            <span class="skill">
+                Verified Skills
+            </span>
+
+        </div>
+
+        <div class="challenge-button locked-button">
+            🔒 Verification Required
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- AI COMPANION -->
+
+<div class="ai-card">
+
+    <div class="robot">
+        🤖
+    </div>
+
+    <div class="ai-content">
+
+        <h3>
+            Your Research Companion
+        </h3>
+
+        <p>
+            You can use AI during your missions.
+            Ask for explanations, request hints, compare approaches,
+            and verify information — but your final scientific decision
+            should be your own.
+        </p>
+
+    </div>
+
+    <div class="ai-tag">
+        AI ASSISTED LEARNING
+    </div>
+
+</div>
+
+
+<!-- SKILL EVIDENCE -->
+
+<section class="evidence">
+
+    <div class="section-title" style="margin-top:0;">
+
+        <h2>
+            What Your Missions Measure
+        </h2>
+
+        <p>
+            Your progress is based on demonstrated evidence, not only quiz scores.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-grid">
+
+        <div class="evidence-item">
+
+            <strong>
+                🧠 Concept Understanding
+            </strong>
+
+            <span>
+                Can you explain why a scientific step is required?
+            </span>
+
+        </div>
+
+
+        <div class="evidence-item">
+
+            <strong>
+                🔍 Problem Solving
+            </strong>
+
+            <span>
+                Can you identify and solve experimental problems?
+            </span>
+
+        </div>
+
+
+        <div class="evidence-item">
+
+            <strong>
+                🤖 AI Utilization
+            </strong>
+
+            <span>
+                Can you use AI critically instead of blindly copying?
+            </span>
+
+        </div>
+
+
+        <div class="evidence-item">
+
+            <strong>
+                🧪 Practical Reasoning
+            </strong>
+
+            <span>
+                Can you make appropriate laboratory decisions?
+            </span>
+
+        </div>
+
+
+        <div class="evidence-item">
+
+            <strong>
+                📈 Consistency
+            </strong>
+
+            <span>
+                Can you demonstrate the competency repeatedly?
+            </span>
+
+        </div>
+
+
+        <div class="evidence-item">
+
+            <strong>
+                👩‍🔬 Human Verification
+            </strong>
+
+            <span>
+                Faculty or authorised reviewers validate strong evidence.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</body>
+</html>
+

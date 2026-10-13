@@ -1,0 +1,4 @@
+Flask
+reportlab
+pygame-ce
+cryptography

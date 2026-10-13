@@ -1,0 +1,32 @@
+LEAP2LAUNCH V26 — START HERE
+============================
+
+1. Extract the ZIP.
+2. Open the folder that contains app.py and requirements.txt.
+3. Double-click START_LEAP2LAUNCH_V26.bat. On first run it creates a local .venv and installs requirements.txt.
+4. Open http://127.0.0.1:5000/.
+5. To verify the running build, open http://127.0.0.1:5000/build-status.
+
+If Windows blocks the script, open PowerShell in this folder and run:
+    py -3.12 -m venv .venv
+    .venv\Scripts\python.exe -m pip install -r requirements.txt
+    .venv\Scripts\python.exe app.py
+
+IMPORTANT
+- Keep the database file and local uploads backed up.
+- Do not delete database.db if you already have real local user data.
+- If port 5000 is already in use, stop the older Flask terminal with Ctrl+C first.
+- Real email OTP delivery needs valid SMTP environment settings; do not deploy with development secrets.
+- External learning resources open on official provider sites. Certificate, exam, fee and eligibility terms can change; check the provider page.
+- The external directory is a curated starting catalogue, not a claim that every individual course worldwide is already indexed.
+
+NEW IN THIS BUILD
+- Search/filter the existing learning catalogue and official external learning resources together.
+- 66 curated external resource entries across 45 subject labels, including yoga/AYUSH, nutrition/dietetics, cyber security, aerospace/aeronautics, space research, archaeology/heritage, health, veterinary science, law, business, arts, vocational trades and more.
+- Resource cards distinguish free learning from certificate/exam conditions and link out to providers rather than copying their course content.
+
+TEST STATUS
+- Python syntax compilation passed for app.py and learning_resource_catalog.py.
+- Learning-resource database seeding passed fresh-database and repeat-seeding checks.
+- Learning catalogue template passed Jinja parsing.
+- Full Flask/browser end-to-end tests were not run in the build environment because Flask is not installed there. The startup script installs dependencies on the first run; run through signup, login, course search/filter and enrolment workflows before production use.

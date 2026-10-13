@@ -1,0 +1,26 @@
+LEAP2LAUNCH V26 — EXPANDED CAREER PATHWAYS & VERIFIED ACCOUNTS
+
+1. Extract this ZIP.
+2. Open a terminal in the v21 folder.
+3. Create/activate your virtual environment and install dependencies:
+   python -m venv .venv
+   .venv\Scripts\activate
+   python -m pip install -r requirements.txt
+4. Configure real SMTP email delivery before using signup/email verification. See PRODUCT_SCOPE_AND_SETUP.md for environment variable names and a PowerShell example.
+5. Run the static verifier:
+   python VERIFY_BUILD.py
+6. Start the app:
+   python app.py
+7. Open http://127.0.0.1:5000
+8. Health check: http://127.0.0.1:5000/build-status
+
+New entry points:
+- /career-explorer — expandable field/degree/occupation starter catalogue
+- /career-discovery — transparent first-pass personalized pathway matcher
+- /career-assessment/<slug> — short, career-family-specific reflection and suggested low-risk next steps
+- /open-library — legal, source-linked open learning repositories
+- /account/roles — add/remove roles and switch workspace
+- /account/change-email — request a change; current email remains active until the new one is verified
+- /verify-email — six-digit email verification for new accounts
+
+Important: this is a local starter build, not a hosted service. Email delivery will not work until valid SMTP credentials and a permitted sender are configured. The catalogue now includes 21+ broad starter categories, but is not yet exhaustive and does not claim to provide live salaries, guaranteed jobs/admission, or full country-specific qualification rules. Do not upload copyrighted material without the required license or permission.

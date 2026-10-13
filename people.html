@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+
+{% block title %}Talent Discovery | Leap2Launch{% endblock %}
+
+{% block content %}
+
+<style>
+    .people-page {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #eef2ff, #f5f3ff, #ecfeff);
+        border: 1px solid #e5e7eb;
+        border-radius: 28px;
+        padding: 36px;
+        margin-bottom: 28px;
+    }
+
+    .hero h1 {
+        margin: 0 0 10px;
+        font-size: 36px;
+        color: #111827;
+    }
+
+    .hero p {
+        margin: 0;
+        max-width: 780px;
+        color: #6b7280;
+        line-height: 1.7;
+    }
+
+    .toolbar {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 18px;
+        margin-bottom: 25px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 230px;
+        padding: 12px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 11px;
+        font-family: inherit;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .search-box:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99,102,241,.10);
+    }
+
+    .filter-btn {
+        border: none;
+        background: #111827;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 11px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .filter-btn:hover {
+        background: #4f46e5;
+    }
+
+    .people-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .person-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: 0 8px 25px rgba(15,23,42,.05);
+        transition: .2s ease;
+    }
+
+    .person-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(15,23,42,.09);
+    }
+
+    .person-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 17px;
+    }
+
+    .avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        background: #eef2ff;
+        color: #4f46e5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: 800;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .person-name {
+        margin: 0 0 4px;
+        color: #111827;
+        font-size: 18px;
+    }
+
+    .person-role {
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    .verified-badge {
+        display: inline-block;
+        margin-top: 6px;
+        background: #ecfdf5;
+        color: #15803d;
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .bio {
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 14px;
+        min-height: 67px;
+        margin-bottom: 17px;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 20px;
+    }
+
+    .skill {
+        background: #f3f4f6;
+        color: #374151;
+        padding: 6px 9px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .skill.verified {
+        background: #ecfdf5;
+        color: #15803d;
+    }
+
+    .person-footer {
+        border-top: 1px solid #f0f0f0;
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .level {
+        color: #6b7280;
+        font-size: 12px;
+    }
+
+    .view-btn {
+        text-decoration: none;
+        color: #4f46e5;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .view-btn:hover {
+        color: #3730a3;
+    }
+
+    .empty {
+        background: white;
+        border: 1px dashed #d1d5db;
+        border-radius: 22px;
+        padding: 45px 20px;
+        text-align: center;
+        color: #6b7280;
+    }
+
+    .empty-icon {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .info-banner {
+        margin-top: 28px;
+        background: #111827;
+        color: white;
+        border-radius: 22px;
+        padding: 25px;
+    }
+
+    .info-banner h2 {
+        margin: 0 0 8px;
+    }
+
+    .info-banner p {
+        margin: 0;
+        color: #d1d5db;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+        .people-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .people-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+<div class="people-page">
+
+    <section class="hero">
+        <h1>🌐 People & Talent Network</h1>
+
+        <p>
+            Discover students, faculty, mentors, researchers, experts and industry profiles.
+            Connect professionally, explore demonstrated skills and move from
+            discovery to verified collaboration—not just self-reported claims.
+        </p>
+    </section>
+
+
+    <form class="toolbar" method="GET" action="{{ url_for('people') }}">
+
+        <input
+            type="text"
+            name="q"
+            class="search-box"
+            placeholder="Search people, skills, department, company..."
+            value="{{ request.args.get('q', '') }}"
+        >
+
+        <button type="submit" class="filter-btn">
+            🔍 Search Talent
+        </button>
+
+    </form>
+
+
+    {% if students %}
+
+    <section class="people-grid">
+
+        {% for person in students %}
+
+        <article class="person-card">
+
+            <div class="person-header">
+
+                <div class="avatar">
+
+                    {% if person.profile_photo %}
+                        <img
+                            src="{{ url_for('static', filename='uploads/' ~ person.profile_photo) }}"
+                            alt="Profile"
+                        >
+                    {% else %}
+                        {{ person.name[0]|upper if person.name else "S" }}
+                    {% endif %}
+
+                </div>
+
+                <div>
+
+                    <h2 class="person-name">
+                        {{ person.name|default("Student") }}
+                    </h2>
+
+                    <div class="person-role">
+                        {% if person.role == "company" %}🏢 Industry · {{ person.industry|default("Company") }}{% elif person.role == "faculty" %}👩‍🏫 {{ person.designation|default("Faculty / Mentor") }}{% elif person.role == "admin" %}🛡️ Platform Admin{% else %}🎓 {{ person.department|default("Student") }}{% endif %}
+                    </div>
+
+                    {% if person.verified_count|default(0) > 0 %}
+                        <span class="verified-badge">
+                            ✓ VERIFIED SKILLS
+                        </span>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <div class="bio">
+
+                {% if person.company_about or person.faculty_about or person.about or person.headline %}
+                    {{ person.company_about or person.faculty_about or person.about or person.headline }}
+                {% else %}
+                    Professional profile on Leap2Launch. Explore their skills,
+                    interests and potential for collaboration.
+                {% endif %}
+
+            </div>
+
+
+            <div class="skills">
+
+                {% if person.skills %}
+
+                    {% if person.skills is string %}
+
+                        {% for skill in person.skills.split(',')[:6] %}
+
+                            {% if skill.strip() %}
+                                <span class="skill">
+                                    {{ skill.strip() }}
+                                </span>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        {% for skill in person.skills[:6] %}
+
+                            <span class="skill">
+                                {% if skill is mapping %}
+                                    {{ skill.name|default(skill.skill|default("Skill")) }}
+                                {% else %}
+                                    {{ skill }}
+                                {% endif %}
+                            </span>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% else %}
+
+                    <span class="skill">
+                        Skills developing
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="person-footer" style="gap:10px;align-items:center;flex-wrap:wrap">
+
+                <span class="level">
+                    {% if person.role == 'student' %}⭐ Level {{ person.level|default(1) }}{% else %}{{ person.role|default('professional')|title }}{% endif %}
+                </span>
+
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                    <a href="{{ url_for('person_profile', user_id=person.user_id) }}" class="view-btn">View Profile →</a>
+                    {% if person.connection and person.connection.status == 'Accepted' %}
+                        <a href="{{ url_for('connection_chat', connection_id=person.connection.id) }}" class="btn" style="padding:8px 11px;font-size:12px">💬 Chat</a>
+                    {% elif person.connection and person.connection.status == 'Pending' and person.connection.requester_user_id == session.get('user_id') %}
+                        <button class="btn" disabled style="padding:8px 11px;font-size:12px">⏳ Pending</button>
+                    {% elif person.connection and person.connection.status == 'Pending' %}
+                        <a href="{{ url_for('connections') }}" class="btn" style="padding:8px 11px;font-size:12px">📨 Respond</a>
+                    {% else %}
+                        <form method="post" action="{{ url_for('send_connection_request', user_id=person.user_id) }}">
+                            <button class="btn" type="submit" style="padding:8px 11px;font-size:12px">🤝 Connect</button>
+                        </form>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+    {% else %}
+
+    <div class="empty">
+
+        <div class="empty-icon">
+            🔍
+        </div>
+
+        <h2>No talent profiles found</h2>
+
+        <p>
+            Try another name or skill, or check back as more students
+            build their Leap2Launch profiles.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <section class="info-banner">
+
+        <h2>🤝 Evidence-based talent matching</h2>
+
+        <p>
+            Students, faculty, mentors and industry partners can discover relevant
+            people based on demonstrated competencies and verified
+            evidence. The goal is to make academia–industry connections
+            more meaningful by focusing on what students can actually
+            demonstrate.
+        </p>
+
+    </section>
+
+</div>
+
+{% endblock %}

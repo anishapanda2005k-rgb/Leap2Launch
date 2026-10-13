@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}Explore Skills | Leap2Launch{% endblock %}
+
+{% block content %}
+
+<style>
+    .explore-page {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #eef2ff, #f5f3ff, #ecfeff);
+        border: 1px solid #e5e7eb;
+        border-radius: 28px;
+        padding: 36px;
+        margin-bottom: 28px;
+    }
+
+    .hero h1 {
+        margin: 0 0 10px;
+        font-size: 36px;
+        color: #111827;
+    }
+
+    .hero p {
+        margin: 0;
+        color: #6b7280;
+        line-height: 1.7;
+        max-width: 760px;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: #4f46e5;
+        font-weight: 700;
+    }
+
+    .domain-section {
+        margin-bottom: 32px;
+    }
+
+    .domain-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .domain-title h2 {
+        margin: 0;
+        color: #111827;
+    }
+
+    .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .skill-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 7px 22px rgba(15, 23, 42, .05);
+        transition: .2s ease;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 32px rgba(15, 23, 42, .09);
+    }
+
+    .skill-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #eef2ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+        margin: 0 0 8px;
+        color: #111827;
+        font-size: 17px;
+    }
+
+    .skill-card p {
+        margin: 0 0 17px;
+        color: #6b7280;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .skill-tag {
+        display: inline-block;
+        background: #f3f4f6;
+        color: #4b5563;
+        padding: 6px 9px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .action-card {
+        margin-top: 30px;
+        background: #111827;
+        color: white;
+        border-radius: 24px;
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .action-card h2 {
+        margin: 0 0 7px;
+    }
+
+    .action-card p {
+        margin: 0;
+        color: #d1d5db;
+        line-height: 1.6;
+    }
+
+    .action-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: white;
+        color: #111827;
+        padding: 12px 18px;
+        border-radius: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .action-btn:hover {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+    @media (max-width: 900px) {
+        .skill-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .skill-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+
+<div class="explore-page">
+
+    <a href="{{ url_for('skills') }}" class="back-link">
+        ← Back to My Skills
+    </a>
+
+    <section class="hero">
+        <h1>🧭 Explore Skills</h1>
+
+        <p>
+            Discover the competencies connected to different academic and
+            industry domains. Choose skills you want to develop and then
+            demonstrate them through practical challenges.
+        </p>
+    </section>
+
+
+    <!-- BIOTECHNOLOGY -->
+
+    <section class="domain-section">
+
+        <div class="domain-title">
+            <span style="font-size:28px;">🧬</span>
+            <h2>Biotechnology</h2>
+        </div>
+
+        <div class="skill-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">🔬</div>
+                <h3>Molecular Biology</h3>
+                <p>
+                    Understand DNA, RNA, proteins and fundamental molecular
+                    biology concepts.
+                </p>
+                <span class="skill-tag">LAB SCIENCE</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🧪</div>
+                <h3>Laboratory Techniques</h3>
+                <p>
+                    Develop practical understanding of common laboratory
+                    workflows and experimental procedures.
+                </p>
+                <span class="skill-tag">PRACTICAL</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Data Analysis</h3>
+                <p>
+                    Interpret experimental observations, organize results
+                    and draw evidence-based conclusions.
+                </p>
+                <span class="skill-tag">ANALYTICS</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPUTER SCIENCE -->
+
+    <section class="domain-section">
+
+        <div class="domain-title">
+            <span style="font-size:28px;">💻</span>
+            <h2>Computer Science</h2>
+        </div>
+
+        <div class="skill-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Programming</h3>
+                <p>
+                    Build logical solutions using programming concepts,
+                    algorithms and structured problem solving.
+                </p>
+                <span class="skill-tag">TECHNICAL</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🧩</div>
+                <h3>Problem Solving</h3>
+                <p>
+                    Break complex problems into smaller steps and design
+                    practical solutions.
+                </p>
+                <span class="skill-tag">CORE SKILL</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🗄️</div>
+                <h3>Database Concepts</h3>
+                <p>
+                    Work with structured information, data relationships
+                    and basic database operations.
+                </p>
+                <span class="skill-tag">TECHNICAL</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BBA -->
+
+    <section class="domain-section">
+
+        <div class="domain-title">
+            <span style="font-size:28px;">📊</span>
+            <h2>BBA / Management</h2>
+        </div>
+
+        <div class="skill-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">📈</div>
+                <h3>Business Analysis</h3>
+                <p>
+                    Examine business situations, identify patterns and use
+                    information to support decisions.
+                </p>
+                <span class="skill-tag">BUSINESS</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💡</div>
+                <h3>Decision Making</h3>
+                <p>
+                    Evaluate alternatives and make reasoned decisions in
+                    realistic business scenarios.
+                </p>
+                <span class="skill-tag">MANAGEMENT</span>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🤝</div>
+                <h3>Communication</h3>
+                <p>
+                    Present ideas clearly and communicate effectively with
+                    teams, customers and stakeholders.
+                </p>
+                <span class="skill-tag">SOFT SKILL</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING PATH -->
+
+    <section class="action-card">
+
+        <div>
+            <h2>🚀 Ready to demonstrate your skills?</h2>
+
+            <p>
+                Enter your domain, solve practical challenges and build
+                evidence that shows what you can actually do.
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('world') }}"
+            class="action-btn"
+        >
+            Enter My World →
+        </a>
+
+    </section>
+
+</div>
+
+{% endblock %}

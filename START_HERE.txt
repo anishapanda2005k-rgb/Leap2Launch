@@ -1,0 +1,25 @@
+LEAP2LAUNCH V26 — EXPANDED CAREER PATHWAYS, LIVE WORKFLOWS & LEARNING STUDIO
+
+1. Extract the ZIP and open PowerShell in this v21 folder (the folder containing app.py).
+2. Back up an existing database.db before opening the app with this version. Do not delete it; database schema updates are additive.
+3. Create/activate a virtual environment and install dependencies:
+   python -m venv .venv
+   .venv\Scripts\activate
+   python -m pip install -r requirements.txt
+4. Configure real SMTP delivery for signup verification and password reset. See PRODUCT_SCOPE_AND_SETUP.md.
+5. Run static checks:
+   python VERIFY_BUILD.py
+6. Start the app:
+   python app.py
+7. Open http://127.0.0.1:5000
+8. Build health check: http://127.0.0.1:5000/build-status
+
+Learning Studio:
+- /courses — searchable course catalogue, enrollment and saved courses
+- /learning-dashboard — enrolled pathways, progress, saved items and completion records
+- Open a course to see topic resources, assessments, progress tracking and course reviews
+- A Leap2Launch completion PDF is available only after all mapped topic assessments pass at 70% or above
+
+Important: This is an original Leap2Launch learning system inspired by common self-paced learning platforms. It does not copy Alison branding, paid course material, proprietary question banks or external certificates. External learning resources remain on their providers' websites. The generated PDF is a Leap2Launch platform completion record, not an accredited qualification.
+
+Testing note: Static syntax/template/source checks are included. Run actual signup, database, assessment, review and PDF workflows locally after installing requirements.txt; static checks alone do not prove production readiness.

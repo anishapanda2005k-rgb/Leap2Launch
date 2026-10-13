@@ -1,0 +1,13 @@
+LEAP2LAUNCH V26 — AI ENGINE QUICKSTART
+
+1. Read AI_ENGINE_SETUP_2026-10-13.md first.
+2. By default, the app uses local deterministic guidance. No API key is included.
+3. For model-powered reasoning, the project owner must configure server-side environment variables:
+   LEAP2LAUNCH_AI_API_KEY (required)
+   LEAP2LAUNCH_AI_BASE_URL (optional; defaults to https://api.openai.com/v1)
+   LEAP2LAUNCH_AI_MODEL (optional; defaults to gpt-4o-mini)
+4. Never commit the key or paste it into the browser/chat. Check provider privacy, pricing and allowed data processing.
+5. Restart the app after setting variables. The AI Companion page shows whether a key is configured, and each answer labels model vs fallback responses.
+6. Run VERIFY_ALL_STATIC.bat. Then test actual login, career discovery, normal chat, model failure/fallback, student profile context and privacy behaviour in a browser.
+
+The AI adapter is not live web search and cannot guarantee current jobs, salaries, admissions or course availability. It does not perform platform actions without separate workflows.

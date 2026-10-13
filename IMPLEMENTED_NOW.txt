@@ -1,0 +1,24 @@
+LEAP2LAUNCH IMPLEMENTATION CHECK
+
+1. Aptitude Learning Lab: every seeded aptitude topic has a Learn + Test module and 5 structured questions.
+2. Soft Skills Learning Lab: every seeded soft-skill topic has a Learn + Test module and 5 scenario/decision questions.
+3. Skill Intelligence: merges required career skills with all student profile skills; complete capability graph includes every mapped skill.
+4. Skill gaps: current vs target and prioritised gaps are visible in the Skill Intelligence graph.
+5. Course learning: every active catalogue course receives six topics; every topic has at least a free resource path, including YouTube search when no specialist resource is curated.
+6. Course roadmap: Learn -> external resource -> topic test -> course verification.
+7. Languages: 12-language selector is present in navbar and Accessibility center.
+8. Accessibility: live clickable preview controls and persistent save route.
+9. Games: Games Hub route and three interactive game entry points (PCR Master, Delivery Dash, Pharma Rescue).
+10. Notifications: skill-gap notifications and notification center remain integrated.
+11. Industry verification: industry challenge verification remains distinct from game evidence.
+12. Syntax: app.py passes Python compile check.
+
+Important: Flask runtime/browser testing must be done inside the user's existing .venv because this build container does not include Flask.
+
+
+UNIVERSAL NETWORKING LAYER (V20)
+- All logged-in roles can discover other account types through People.
+- Student, Faculty/Mentor, Industry and other registered users can send normal Connect requests.
+- Requests have Pending / Accepted / Rejected states with notifications.
+- Accepted connections have protected one-to-one chat with stored messages and notifications.
+- Mentorship remains a separate workflow; Connect does not replace Request Mentorship.
